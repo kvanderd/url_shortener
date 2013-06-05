@@ -1,0 +1,37 @@
+<div class="background">
+<div class="container">
+  <h1>Radical URL Shortener</h1>
+</div>
+
+<div class="search_bar">
+  <form id='blah' action='/' method='post'>
+    <input type="text" name="input_url" placeholder="long url to short url" required>
+    <input type="submit" value="shorter now!">
+  </form>
+  
+  <%= erb error_template %>
+</div>
+  
+<br />
+<div class="link_table">
+  <% if @urls %>
+    <table border="8">
+      <tr>
+        <th colspan="3">All The Shortened Links</th>
+      </tr>
+      <tr>
+        <th>Original Url</th>
+        <th>Short URLs</th>
+        <th># of Clicks</th>
+      </tr>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><%= url.original_url %></a></td>
+        <td><a href="/<%=url.id%>"><%= url.short_url %></a></td>
+        <td><%= url.counter %></td>
+      </tr>
+    <% end %>
+    </table>
+  <% end %>
+</div>
+</div>
